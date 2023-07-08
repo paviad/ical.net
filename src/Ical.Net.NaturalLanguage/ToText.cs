@@ -329,6 +329,10 @@ public class ToText {
             else if (_byWeekDay is not null) {
                 ByWeekDay();
             }
+
+            if (_recurrencePattern.ByHour.Count > 0) {
+                ByHour();
+            }
         }
     }
 

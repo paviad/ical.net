@@ -16,6 +16,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Recur.g4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Antlr4 Include="Recur.g4">
+      <Listener>False</Listener>
+      <Package>Ical.Net.NaturalLanguage</Package>
+      <GAtn>False</GAtn>
+    </Antlr4>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.0" />
+    <PackageReference Include="Antlr4BuildTasks" Version="12.2.0" />
     <PackageReference Include="OneOf" Version="3.0.255" />
   </ItemGroup>
 

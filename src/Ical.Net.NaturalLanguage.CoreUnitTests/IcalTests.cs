@@ -6,6 +6,7 @@ public class IcalTests {
     [Theory]
     [InlineData("Every day", "RRULE:FREQ=DAILY")]
     [InlineData("Every day at 10, 12 and 17", "RRULE:FREQ=DAILY;BYHOUR=10,12,17")]
+    [InlineData("Every Sunday at 10, 12 and 17", "RRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=10,12,17", "Every week on Sunday at 10, 12 and 17")]
     [InlineData("Every week", "RRULE:FREQ=WEEKLY")]
     [InlineData("Every hour", "RRULE:FREQ=HOURLY")]
     [InlineData("Every 4 hours", "RRULE:FREQ=HOURLY;INTERVAL=4")]
@@ -28,7 +29,7 @@ public class IcalTests {
     [InlineData("Every week for 20 times", "RRULE:FREQ=WEEKLY;COUNT=20")]
     public void TestToAndFromText(string text, string rpStr, string? returnText = null) {
         returnText ??= text;
-        var rp = Parser.ParseText(text);
+        var rp = MyParser.ParseText(text);
         Assert.Equal(rpStr["RRULE:".Length..], rp?.ToString());
         var rp2 = new RecurrencePattern(rpStr);
         var friendlyName = ToText.ToFriendlyText(rp2);

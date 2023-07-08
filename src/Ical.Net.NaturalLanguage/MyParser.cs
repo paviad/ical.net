@@ -4,14 +4,14 @@ using OneOf;
 
 namespace Ical.Net.NaturalLanguage;
 
-public class Parser {
+public class MyParser {
     private readonly Dictionary<string, Regex> _rules;
     private string _text = null!;
     private string? _symbol;
     private MatchCollection? _value;
     private bool _done = true;
 
-    private Parser(Dictionary<string, Regex> rules) {
+    private MyParser(Dictionary<string, Regex> rules) {
         _rules = rules;
     }
 
@@ -95,16 +95,14 @@ public class Parser {
     public static RecurrencePattern? ParseText(string text, Culture? culture = null) {
         culture ??= Culture.English;
         RecurrencePattern options = new();
-        var ttr = new Parser(culture.Tokens);
+        var ttr = new MyParser(culture.Tokens);
 
         var weekdays = culture.WeekDays;
-        var weekend = culture.DayNames.Keys.Except(weekdays).ToList();
         var weekdayAbbrevs = weekdays.Select(r => r.ToString()[..2].ToUpper());
 
         if (!ttr.Start(text)) return null;
 
         S();
-        //options.PostProcess();
         return options;
 
         void S() {
@@ -126,8 +124,9 @@ public class Parser {
                 // DAILY on weekdays is not a valid rule
                 case "weekday(s)":
                     options.Frequency = FrequencyType.Weekly;
-                    options.ByDay.AddRange(weekdayAbbrevs.Select(z=>MkWeekDay(z)));
+                    options.ByDay.AddRange(weekdayAbbrevs.Select(z => MkWeekDay(z)));
                     ttr.NextSymbol();
+                    At();
                     F();
                     break;
 
@@ -135,6 +134,7 @@ public class Parser {
                     options.Frequency = FrequencyType.Weekly;
                     if (ttr.NextSymbol()) {
                         On();
+                        At();
                         F();
                     }
 
@@ -204,7 +204,8 @@ public class Parser {
                         ttr.NextSymbol();
                     }
 
-                    MdaYs();
+                    At();
+                    Mdays();
                     F();
                     break;
 
@@ -249,7 +250,7 @@ public class Parser {
             }
         }
 
-        void MdaYs() {
+        void Mdays() {
             ttr.Accept("on");
             ttr.Accept("the");
 
