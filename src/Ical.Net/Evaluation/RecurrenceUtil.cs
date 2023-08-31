@@ -87,6 +87,8 @@ namespace Ical.Net.Evaluation
 
                     return row;
                 }
+                case FrequencyType.None:
+                case FrequencyType.Secondly:
                 default:
                     return new bool?[] {false, null, false, false, false, false, false, false, false};
             }

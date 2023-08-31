@@ -34,6 +34,8 @@ namespace Ical.Net.Serialization.DataTypes
                 case FreeBusyStatus.Free:
                     entry.Parameters.Set("FBTYPE", "FREE");
                     break;
+                default:
+                    break;
             }
 
             return base.SerializeToString(obj);

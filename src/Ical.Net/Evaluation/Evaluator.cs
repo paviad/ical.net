@@ -81,6 +81,7 @@ namespace Ical.Net.Evaluation
                     dt = old.AddDays(-old.DayOfYear + 1).AddYears(interval);
                     break;
                 // FIXME: use a more specific exception.
+                case FrequencyType.None:
                 default:
                     throw new Exception("FrequencyType.NONE cannot be evaluated. Please specify a FrequencyType before evaluating the recurrence.");
             }

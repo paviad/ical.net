@@ -379,6 +379,14 @@ namespace Ical.Net.Serialization.DataTypes
                                     case FrequencyType.Monthly:
                                         r.ByMonthDay.Add(num);
                                         break;
+                                    case FrequencyType.None:
+                                    case FrequencyType.Secondly:
+                                    case FrequencyType.Minutely:
+                                    case FrequencyType.Hourly:
+                                    case FrequencyType.Daily:
+                                    case FrequencyType.Weekly:
+                                    default:
+                                        break;
                                 }
                                 break;
                             case "week":

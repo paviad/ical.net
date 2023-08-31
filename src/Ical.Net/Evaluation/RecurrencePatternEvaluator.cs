@@ -146,8 +146,12 @@ namespace Ical.Net.Evaluation
                                     case RecurrenceRestrictionType.RestrictHourly:
                                         pattern.Frequency = FrequencyType.Daily;
                                         break;
+                                    case RecurrenceRestrictionType.NoRestriction:
+                                    case null:
+                                    default:
+                                        break;
+                                    }
                                 }
-                            }
                                 break;
                             case FrequencyType.Minutely:
                             {
@@ -159,6 +163,12 @@ namespace Ical.Net.Evaluation
                                     case RecurrenceRestrictionType.RestrictHourly:
                                         pattern.Frequency = FrequencyType.Daily;
                                         break;
+                                    case RecurrenceRestrictionType.Default:
+                                    case RecurrenceRestrictionType.NoRestriction:
+                                    case RecurrenceRestrictionType.RestrictSecondly:
+                                    case null:
+                                    default:
+                                        break;
                                 }
                             }
                                 break;
@@ -169,8 +179,22 @@ namespace Ical.Net.Evaluation
                                     case RecurrenceRestrictionType.RestrictHourly:
                                         pattern.Frequency = FrequencyType.Daily;
                                         break;
+                                    case RecurrenceRestrictionType.Default:
+                                    case RecurrenceRestrictionType.NoRestriction:
+                                    case RecurrenceRestrictionType.RestrictSecondly:
+                                    case RecurrenceRestrictionType.RestrictMinutely:
+                                    case null:
+                                    default:
+                                        break;
                                 }
                             }
+                                break;
+                            case FrequencyType.None:
+                            case FrequencyType.Daily:
+                            case FrequencyType.Weekly:
+                            case FrequencyType.Monthly:
+                            case FrequencyType.Yearly:
+                            default:
                                 break;
                         }
                         break;
@@ -187,6 +211,10 @@ namespace Ical.Net.Evaluation
                                     case RecurrenceRestrictionType.RestrictMinutely:
                                     case RecurrenceRestrictionType.RestrictHourly:
                                         throw new ArgumentException();
+                                    case RecurrenceRestrictionType.NoRestriction:
+                                    case null:
+                                    default:
+                                        break;
                                 }
                             }
                                 break;
@@ -197,6 +225,12 @@ namespace Ical.Net.Evaluation
                                     case RecurrenceRestrictionType.RestrictMinutely:
                                     case RecurrenceRestrictionType.RestrictHourly:
                                         throw new ArgumentException();
+                                    case RecurrenceRestrictionType.Default:
+                                    case RecurrenceRestrictionType.NoRestriction:
+                                    case RecurrenceRestrictionType.RestrictSecondly:
+                                    case null:
+                                    default:
+                                        break;
                                 }
                             }
                                 break;
@@ -206,10 +240,27 @@ namespace Ical.Net.Evaluation
                                 {
                                     case RecurrenceRestrictionType.RestrictHourly:
                                         throw new ArgumentException();
+                                    case RecurrenceRestrictionType.Default:
+                                    case RecurrenceRestrictionType.NoRestriction:
+                                    case RecurrenceRestrictionType.RestrictSecondly:
+                                    case RecurrenceRestrictionType.RestrictMinutely:
+                                    case null:
+                                    default:
+                                        break;
                                 }
                             }
                                 break;
+                            case FrequencyType.None:
+                            case FrequencyType.Daily:
+                            case FrequencyType.Weekly:
+                            case FrequencyType.Monthly:
+                            case FrequencyType.Yearly:
+                            default:
+                                break;
                         }
+                        break;
+                    case null:
+                    default:
                         break;
                 }
             }
