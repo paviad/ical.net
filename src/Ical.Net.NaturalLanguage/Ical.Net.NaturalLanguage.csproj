@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -14,11 +13,9 @@
     <PackageReleaseNotes>https://github.com/rianjs/ical.net/blob/master/release-notes.md</PackageReleaseNotes>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="Recur.g4" />
   </ItemGroup>
-
   <ItemGroup>
     <Antlr4 Include="Recur.g4">
       <Listener>False</Listener>
@@ -26,15 +23,12 @@
       <GAtn>False</GAtn>
     </Antlr4>
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.0" />
-    <PackageReference Include="Antlr4BuildTasks" Version="12.2.0" />
-    <PackageReference Include="OneOf" Version="3.0.255" />
+    <PackageReference Include="Antlr4.Runtime.Standard" Version="4.13.1" />
+    <PackageReference Include="Antlr4BuildTasks" Version="12.4.0" />
+    <PackageReference Include="OneOf" Version="3.0.263" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Ical.Net\Ical.Net.csproj" />
   </ItemGroup>
-
 </Project>
