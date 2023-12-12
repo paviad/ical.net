@@ -1,4 +1,6 @@
-﻿namespace Ical.Net.DataTypes
+﻿using System.Text.Json.Serialization;
+
+namespace Ical.Net.DataTypes
 {
     /// <summary>
     /// An abstract class from which all iCalendar data types inherit.
