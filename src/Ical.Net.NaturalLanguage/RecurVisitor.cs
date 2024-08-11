@@ -3,13 +3,13 @@
 namespace Ical.Net.NaturalLanguage;
 
 internal class RecurVisitor : RecurBaseVisitor<RecurrencePattern> {
-    private static readonly string[] DayNames = {
+    private static readonly string[] DayNames = [
         "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
-    };
+    ];
 
-    private static readonly string[] DayAbbrevs = { "sun", "mon", "tue", "wed", "thu", "fri", "sat" };
+    private static readonly string[] DayAbbrevs = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 
-    private static readonly string[] MonthNames = {
+    private static readonly string[] MonthNames = [
         "january",
         "february",
         "march",
@@ -22,11 +22,11 @@ internal class RecurVisitor : RecurBaseVisitor<RecurrencePattern> {
         "october",
         "november",
         "december",
-    };
+    ];
 
-    private static readonly string[] MonthAbbrevs = {
+    private static readonly string[] MonthAbbrevs = [
         "jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec",
-    };
+    ];
 
     public override RecurrencePattern VisitCount(RecurParser.CountContext context) {
         var count = int.Parse(context.NUMBER().GetText());
