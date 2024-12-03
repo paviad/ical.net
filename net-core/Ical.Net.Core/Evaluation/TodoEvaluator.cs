@@ -88,14 +88,7 @@ namespace Ical.Net.Evaluation
             foreach (var period in Periods.Where(period => period.EndTime == null))
             {
                 period.Duration = Todo.Duration;
-                if (period.Duration != null)
-                {
-                    period.EndTime = period.StartTime.Add(Todo.Duration);
-                }
-                else
-                {
-                    period.Duration = Todo.Duration;
-                }
+                period.EndTime = period.StartTime.Add(Todo.Duration);
             }
             return Periods;
         }

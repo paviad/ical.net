@@ -41,18 +41,14 @@ namespace Ical.Net.Evaluation
             foreach (var period in Periods)
             {
                 period.Duration = CalendarEvent.Duration;
-                period.EndTime = period.Duration == null
-                    ? period.StartTime
-                    : period.StartTime.Add(CalendarEvent.Duration);
+                period.EndTime = period.StartTime.Add(CalendarEvent.Duration);
             }
 
             // Ensure each period has a duration
             foreach (var period in Periods.Where(p => p.EndTime == null))
             {
                 period.Duration = CalendarEvent.Duration;
-                period.EndTime = period.Duration == null
-                    ? period.StartTime
-                    : period.StartTime.Add(CalendarEvent.Duration);
+                period.EndTime = period.StartTime.Add(CalendarEvent.Duration);
             }
 
             return Periods;

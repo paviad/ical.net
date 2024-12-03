@@ -16,6 +16,7 @@ namespace Ical.Net.Serialization
             _mSerializationContext = ctx;
         }
 
+        [Obsolete("Obsolete")]
         protected byte[] Decode7Bit(string value)
         {
             try
@@ -64,7 +65,9 @@ namespace Ical.Net.Serialization
             switch (encoding.ToUpper())
             {
                 case "7BIT":
+#pragma warning disable CS0618 // Type or member is obsolete
                     return Decode7Bit;
+#pragma warning restore CS0618 // Type or member is obsolete
                 case "8BIT":
                     return Decode8Bit;
                 case "BASE64":
@@ -74,6 +77,7 @@ namespace Ical.Net.Serialization
             }
         }
 
+        [Obsolete("Obsolete")]
         protected string Encode7Bit(byte[] data)
         {
             try
@@ -122,7 +126,9 @@ namespace Ical.Net.Serialization
             switch (encoding.ToUpper())
             {
                 case "7BIT":
+#pragma warning disable CS0618 // Type or member is obsolete
                     return Encode7Bit;
+#pragma warning restore CS0618 // Type or member is obsolete
                 case "8BIT":
                     return Encode8Bit;
                 case "BASE64":
@@ -160,7 +166,7 @@ namespace Ical.Net.Serialization
 
             // Decode the string into the current encoding
             var encodingStack = _mSerializationContext.GetService(typeof (EncodingStack)) as EncodingStack;
-            return encodingStack.Current.GetString(data);
+            return encodingStack!.Current.GetString(data);
         }
 
         public byte[] DecodeData(string encoding, string value)
